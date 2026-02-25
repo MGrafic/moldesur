@@ -1,0 +1,902 @@
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardacantos Pro - Fabricación de Perfiles para Cerámica y Porcelanato</title>
+    <style>
+        /* RESET Y ESTILOS BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* CONTENEDOR */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .logo span {
+            color: #e67e22;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #e67e22;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #2c3e50;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #fff;
+            padding: 150px 20px 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #e67e22;
+            color: #fff;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .btn:hover {
+            background: #d35400;
+            transform: translateY(-2px);
+        }
+
+        /* SECCIÓN DE PRODUCTOS */
+        .products {
+            padding: 80px 20px;
+            background: #fff;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 200px;
+            background: #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #bdc3c7;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .product-info p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .product-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .spec-tag {
+            background: #ecf0f1;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #2c3e50;
+        }
+
+        /* SECCIÓN DE CARACTERÍSTICAS */
+        .features {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: #2c3e50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .feature-card p {
+            color: #666;
+        }
+
+        /* SECCIÓN DE GALERÍA */
+        .gallery {
+            padding: 80px 20px;
+            background: #fff;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            height: 250px;
+            background: #ecf0f1;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #bdc3c7;
+            transition: transform 0.3s;
+            overflow: hidden;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        /* SECCIÓN DE SOBRE NOSOTROS */
+        .about {
+            padding: 80px 20px;
+            background: #2c3e50;
+            color: #fff;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #e67e22;
+        }
+
+        .stat-label {
+            opacity: 0.8;
+        }
+
+        /* SECCIÓN DE CONTACTO */
+        .contact {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: #2c3e50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ecf0f1;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #e67e22;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: #e67e22;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #d35400;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #2c3e50;
+            color: #fff;
+            padding: 50px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #e67e22;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #e67e22;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ANIMACIONES */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Guardacantos<span>Pro</span></a>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h1>Fabricación de Guardacantos</h1>
+            <p>Perfiles de alta calidad para cerámicas y porcelanatos. Durabilidad y diseño para tus proyectos.</p>
+            <a href="#productos" class="btn">Ver Productos</a>
+        </div>
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section class="products" id="productos">
+        <div class="section-title">
+            <h2>Nuestros Productos</h2>
+            <p>Amplia variedad de guardacantos para cada necesidad</p>
+        </div>
+        <div class="products-grid">
+            <!-- Producto 1 -->
+            <div class="product-card">
+                <div class="product-image">📐</div>
+                <div class="product-info">
+                    <h3>Guardacanto Redondeado</h3>
+                    <p>Perfil redondeado para bordes suaves y seguros en zonas de alto tráfico.</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">Aluminio</span>
+                        <span class="spec-tag">PVC</span>
+                        <span class="spec-tag">9.5mm</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="product-card">
+                <div class="product-image">⬛</div>
+                <div class="product-info">
+                    <h3>Guardacanto Cuadrado</h3>
+                    <p>Diseño moderno de arista viva para acabados contemporáneos y minimalistas.</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">Aluminio</span>
+                        <span class="spec-tag">Acero Inoxidable</span>
+                        <span class="spec-tag">12mm</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="product-card">
+                <div class="product-image">🔲</div>
+                <div class="product-info">
+                    <h3>Guardacanto para Escalera</h3>
+                    <p>Perfil antideslizante con remate de seguridad para escalones y rampas.</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">Aluminio Anodizado</span>
+                        <span class="spec-tag">Antideslizante</span>
+                        <span class="spec-tag">Diferentes Alturas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 4 -->
+            <div class="product-card">
+                <div class="product-image">📏</div>
+                <div class="product-info">
+                    <h3>Guardacanto Metálico</h3>
+                    <p>Alta resistencia para zonas industriales y comerciales de alto tráfico.</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">Acero Inoxidable</span>
+                        <span class="spec-tag">Zinc</span>
+                        <span class="spec-tag">Alta Durabilidad</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 5 -->
+            <div class="product-card">
+                <div class="product-image">🎨</div>
+                <div class="product-info">
+                    <h3>Guardacanto Decorativo</h3>
+                    <p>Acabados especiales y colores personalizados para realzar tus diseños.</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">Variados Colores</span>
+                        <span class="spec-tag">Efecto Madera</span>
+                        <span class="spec-tag">Cromo</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 6 -->
+            <div class="product-card">
+                <div class="product-image">🔧</div>
+                <div class="product-info">
+                    <h3>Perfil de Terminación</h3>
+                    <p>Perfiles para transición entre diferentes tipos de revestimientos.</p>
+                    <div class="product-specs">
+                        <span class="spec-tag">Transición</span>
+                        <span class="spec-tag">Nivelación</span>
+                        <span class="spec-tag">Remate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARACTERÍSTICAS -->
+    <section class="features">
+        <div class="section-title">
+            <h2>¿Por Qué Elegirnos?</h2>
+            <p>Calidad garantizada en cada producto que fabricamos</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Alta Resistencia</h3>
+                <p>Materiales de primera calidad que garantizan durabilidad y resistencia al desgaste.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3>Acabados Perfectos</h3>
+                <p>Diseños precisos que proporcionan terminaciones profesionales y estéticas.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📐</div>
+                <h3>Fabricación a Medida</h3>
+                <p>Posibilidad de fabricar medidas y acabados personalizados según tus necesidades.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚚</div>
+                <h3>Entrega a Tiempo</h3>
+                <p>Compromiso con los plazos de entrega y logística eficiente a todo el país.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section class="gallery" id="galeria">
+        <div class="section-title">
+            <h2>Galería de Trabajos</h2>
+            <p>Ejemplos de nuestra calidad en diferentes proyectos</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">🏠</div>
+            <div class="gallery-item">🏢</div>
+            <div class="gallery-item">🏪</div>
+            <div class="gallery-item">🏨</div>
+            <div class="gallery-item">🏠</div>
+            <div class="gallery-item">🏗️</div>
+        </div>
+    </section>
+
+    <!-- SOBRE NOSOTROS -->
+    <section class="about" id="nosotros">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Sobre Nuestra Empresa</h2>
+                <p>Somos una empresa dedicada a la fabricación de guardacantos y perfiles para la industria de la construcción. Con años de experiencia en el mercado, nos hemos convertido en referentes en calidad y servicio.</p>
+                <p>Nuestra misión es proporcionar productos que no solo protejan los bordes de cerámicas y porcelanatos, sino que también contribuyan a la estética y seguridad de cada proyecto.</p>
+                <p>Contamos con tecnología de punta y un equipo de profesionales comprometidos con la excelencia en cada detalle de nuestra producción.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-item">
+                    <div class="stat-number">+10</div>
+                    <div class="stat-label">Años de Experiencia</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Clientes Satisfechos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Tipos de Productos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Calidad Garantizada</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contact" id="contacto">
+        <div class="section-title">
+            <h2>Contáctanos</h2>
+            <p>Estamos listos para atender tus consultas y presupuestos</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Información de Contacto</h2>
+                <p>Visítanos o contáctanos para resolver todas tus dudas sobre nuestros productos y servicios.</p>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <strong>Dirección</strong>
+                        <p>Calle Principal 123, Ciudad</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <strong>Teléfono</strong>
+                        <p>(011) 1234-5678</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <strong>Email</strong>
+                        <p>info@guardacantospro.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">🕐</div>
+                    <div>
+                        <strong>Horarios</strong>
+                        <p>Lunes a Viernes: 8:00 - 18:00</p>
+                        <p>Sábados: 8:00 - 13:00</p>
+                    </div>
+                </div>
+            </div>
+            
+            <form class="contact-form" onsubmit="enviarFormulario(event)">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo *</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="Tu número de teléfono">
+                </div>
+                
+                <div class="form-group">
+                    <label for="producto">Producto de Interés</label>
+                    <select id="producto" name="producto">
+                        <option value="">Seleccionar producto...</option>
+                        <option value="redondeado">Guardacanto Redondeado</option>
+                        <option value="cuadrado">Guardacanto Cuadrado</option>
+                        <option value="escalera">Guardacanto para Escalera</option>
+                        <option value="metalico">Guardacanto Metálico</option>
+                        <option value="decorativo">Guardacanto Decorativo</option>
+                        <option value="terminacion">Perfil de Terminación</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensaje">Mensaje *</label>
+                    <textarea id="mensaje" name="mensaje" required placeholder="Cuéntanos sobre tu proyecto o consulta..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Enviar Consulta</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>GuardacantosPro</h3>
+                <p>Fabricación de guardacantos y perfiles de alta calidad para cerámicas y porcelanatos.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Productos</h3>
+                <a href="#productos">Guardacantos Redondeados</a>
+                <a href="#productos">Guardacantos Cuadrados</a>
+                <a href="#productos">Perfiles para Escaleras</a>
+                <a href="#productos">Perfiles Metálicos</a>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <a href="#inicio">Inicio</a>
+                <a href="#productos">Productos</a>
+                <a href="#galeria">Galería</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>📍 Calle Principal 123</p>
+                <p>📞 (011) 1234-5678</p>
+                <p>📧 info@guardacantospro.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 GuardacantosPro. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Menú móvil
+        function toggleMenu() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('active');
+        }
+
+        // Smooth scroll para los enlaces
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Cerrar menú en móvil
+                    document.getElementById('nav').classList.remove('active');
+                }
+            });
+        });
+
+        // Envío de formulario (simulado)
+        function enviarFormulario(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu consulta! Nos pondremos en contacto contigo a la brevedad.');
+            e.target.reset();
+        }
+
+        // Animación al hacer scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
